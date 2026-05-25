@@ -1,0 +1,273 @@
+---
+const dates = [
+  'Week 1 — July 7–11',
+  'Week 2 — July 28 – Aug 1',
+  'Week 3 — Aug 18–22',
+];
+
+const activities = [
+  { icon: '🐴', text: 'Guided horse grooming and beginner riding lessons each day' },
+  { icon: '🐔', text: 'Morning egg collection and hands-on chicken care' },
+  { icon: '🌱', text: 'Farm-to-table snacks from our garden harvest' },
+  { icon: '🏕️', text: 'Campfire storytelling and outdoor skills' },
+  { icon: '🎠', text: 'End-of-week mini horse show for families' },
+];
+
+const highlights = [
+  { val: '12', lbl: 'Max campers' },
+  { val: '9am–4pm', lbl: 'Daily hours' },
+  { val: '4', lbl: 'Horses to meet' },
+  { val: '15', lbl: 'Free-range hens' },
+];
+---
+
+<section id="summer-camp" class="camp-section">
+  <div class="section-inner">
+    <h2 class="section-title">Summer Camp 2025</h2>
+    <p class="section-sub">
+      One magical week on the farm — grooming horses, collecting eggs, learning to ride, and making
+      friends for life. Spots are limited, so register early!
+    </p>
+
+    <div class="camp-feature">
+      <div class="camp-left">
+        <div>
+          <div class="age-badge">Ages 6–14 · Day Camp</div>
+          <h3>Firebelly Farm Camp</h3>
+          <p>
+            A full week of real farm life — kids arrive each morning to care for animals, ride
+            horses, and get their hands delightfully dirty.
+          </p>
+          <div class="dates-list">
+            {dates.map((d) => <div class="date-chip">📅 {d}</div>)}
+          </div>
+        </div>
+        <div class="price-row">
+          <div class="price">$420 <span>/ week</span></div>
+          <a href="#contact" class="reg-btn">Register Now →</a>
+        </div>
+      </div>
+
+      <div class="camp-right">
+        <h4>What campers get up to</h4>
+        <ul class="act-list">
+          {activities.map((a) => (
+            <li>
+              <div class="act-ico">{a.icon}</div>
+              <div>{a.text}</div>
+            </li>
+          ))}
+        </ul>
+        <div class="highlights">
+          {highlights.map((h) => (
+            <div class="hl">
+              <div class="val">{h.val}</div>
+              <div class="lbl">{h.lbl}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .camp-section {
+    background: #fff5ed;
+    padding: 0 0 64px;
+  }
+
+  .section-inner {
+    padding: 64px 32px 0;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #8b2500;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: #7a4030;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .camp-feature {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid #f5c99a;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .camp-left {
+    background: linear-gradient(160deg, #c0390b, #e8560a, #f5820a);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .age-badge {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .camp-left h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #fff;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .camp-left p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .dates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .date-chip {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 10px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .price span {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+
+  .reg-btn {
+    background: #fff;
+    color: #c0390b;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 24px;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s;
+  }
+
+  .reg-btn:hover {
+    background: #fff5ed;
+  }
+
+  .camp-right {
+    padding: 40px 36px;
+    background: #fff;
+  }
+
+  .camp-right h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #8b2500;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .act-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .act-list li {
+    font-size: 14px;
+    color: #4a2810;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .act-ico {
+    width: 28px;
+    height: 28px;
+    background: #fff0e0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .hl {
+    background: #fff5ed;
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid #f5d5b0;
+  }
+
+  .val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #c0390b;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .lbl {
+    font-size: 11px;
+    color: #7a4030;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+</style>

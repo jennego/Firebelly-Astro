@@ -1,0 +1,168 @@
+---
+---
+
+<section class="hero">
+  <img
+    class="hero-img"
+    src="/sunrise_mares_24.jpg"
+    alt="Two horses grazing at Firebelly Farm at golden sunset with mountains in the background"
+  />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Est. 2024 ✦ Family Farm ✦ Summer Camp</div>
+    <h1><em>Firebelly</em> Farm</h1>
+    <p class="tagline">Where Days Smell Like Hay &amp; Happiness</p>
+    <div class="hero-btns">
+      <a href="#summer-camp" class="btn-primary">Book Summer Camp</a>
+      <a href="#visit-us" class="btn-secondary">Plan a Visit</a>
+    </div>
+  </div>
+</section>
+
+<div class="hero-strip">
+  <div class="strip-item"><span class="ico">🐴</span> Horses</div>
+  <div class="strip-item"><span class="ico">🐔</span> Chickens</div>
+  <div class="strip-item"><span class="ico">🌻</span> Gardens</div>
+  <div class="strip-item"><span class="ico">🏕️</span> Summer Camp</div>
+</div>
+
+<style>
+  .hero {
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(40, 10, 0, 0.18) 0%,
+      rgba(100, 20, 0, 0.55) 60%,
+      rgba(60, 10, 0, 0.78) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .hero-badge {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-content h1 em {
+    color: #ffd580;
+    font-style: normal;
+  }
+
+  .tagline {
+    font-size: 20px;
+    color: #ffe8cc;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: #fff;
+    color: #c0390b;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    transition: transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.04);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .hero-strip {
+    background: #c0390b;
+    display: flex;
+    justify-content: center;
+  }
+
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    color: #ffe4cc;
+    font-size: 14px;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .strip-item:last-child {
+    border-right: none;
+  }
+
+  .ico {
+    font-size: 20px;
+  }
+</style>

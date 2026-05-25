@@ -1,0 +1,118 @@
+---
+const animals = [
+  {
+    emoji: '🐴',
+    name: 'Our Horses',
+    description:
+      'We have 3 horses and 1 pony. Bambee the pony, Ray the king, Vegas the sweet retiree and Athena the local vacuum cleaner',
+    fact: '4 horses on site',
+  },
+  {
+    emoji: '🐔',
+    name: 'Our Chickens',
+    description:
+      'Our flock of 15 heritage breed chickens produce beautiful speckled eggs daily. Kids love hand-feeding them scratch and learning where breakfast really comes from.',
+    fact: '15 chickens',
+  },
+];
+---
+
+<section id="our-animals" class="animals-section">
+  <div class="animals-inner">
+    <h2 class="section-title">Meet Our Animals</h2>
+    <p class="section-sub">
+      Every creature on Firebelly Farm has a name, a personality, and a whole lot of love to give.
+    </p>
+    <div class="animals-grid">
+      {animals.map((animal) => (
+        <div class="animal-card">
+          <div class="animal-emoji">{animal.emoji}</div>
+          <div class="animal-info">
+            <h3>{animal.name}</h3>
+            <p>{animal.description}</p>
+            <span class="animal-fact">{animal.fact}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .animals-section {
+    background: #fef2e7;
+    padding: 64px 32px;
+  }
+
+  .animals-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #8b2500;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: #7a4030;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .animals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .animal-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px;
+    border: 1.5px solid #f5c99a;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .animal-emoji {
+    font-size: 48px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff5ed;
+    border-radius: 14px;
+    flex-shrink: 0;
+  }
+
+  .animal-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #8b2500;
+    margin-bottom: 6px;
+  }
+
+  .animal-info p {
+    font-size: 14px;
+    color: #6b3a28;
+    line-height: 1.6;
+  }
+
+  .animal-fact {
+    display: inline-block;
+    margin-top: 10px;
+    background: #fff0e0;
+    color: #c0390b;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+</style>

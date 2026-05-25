@@ -1,0 +1,54 @@
+---
+const navLinks = ['Home', 'Summer Camp', 'Our Animals', 'Visit Us', 'Contact'];
+---
+
+<nav class="nav">
+  <div class="nav-logo">🔥 <span>Firebelly</span> Farm</div>
+  <div class="nav-links">
+    {navLinks.map((link) => (
+      <a href={link === 'Home' ? '/' : `#${link.toLowerCase().replace(/\s+/g, '-')}`}>{link}</a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .nav {
+    background: #c0390b;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+
+  .nav-logo span {
+    color: #ffd580;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .nav-links a {
+    color: #ffe4cc;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+  }
+</style>

@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import SummerCamp from '../components/SummerCamp.astro';
+import Animals from '../components/Animals.astro';
+import VisitUs from '../components/VisitUs.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Firebelly Farm — Where Days Smell Like Hay & Happiness"
+  description="Family hobby farm and summer camps for kids in the Cowichan Valley, BC. Horses, chickens, and unforgettable summer memories."
+>
+  <Nav />
+  <Hero />
+  <div class="wavy">~ ~ ~ ~ ~ ~ ~ ~</div>
+  <SummerCamp />
+  <Animals />
+  <VisitUs />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .wavy {
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 8px;
+    padding: 8px 0;
+    color: #f5c99a;
+    background: #fff5ed;
+  }
+</style>
