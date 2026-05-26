@@ -1,18 +1,14 @@
 {
-  "name": "firebelly-onepage",
+  "name": "firebelly-farm",
   "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/netlify": "^7.0.10",
-    "astro": "^6.3.7"
+    "astro": "^4.0.0"
   }
 }

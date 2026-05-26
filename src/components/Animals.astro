@@ -1,36 +1,184 @@
 ---
 const animals = [
   {
-    emoji: '🐴',
-    name: 'Our Horses',
-    description:
-      'We have 3 horses and 1 pony. Bambee the pony, Ray the king, Vegas the sweet retiree and Athena the local vacuum cleaner',
-    fact: '4 horses on site',
+    species: 'horse',
+    badge: 'Horse',
+    name: 'Ray',
+    showName: 'Happenstance',
+    description: 'Also known as "Ray Ray", "Ray-dough" and "Lerato", Ray is a hilarious, ridiculous old man (with a moustache - yes, really!) who is quite particular about his life and has enough opinions to rival a mare. A former show jumper, he now does low-level dressage. Ray is passionate about food, loves rolling in the dirt and monitoring his mares. He is as ridiculous as he is pretty.',
+    photo: null,
+    info: [
+      { label: 'Breed',       value: 'Dutch Warmblood / Appendix QH' },
+      { label: 'Birthday',    value: 'May 1, 2005' },
+      { label: 'Sex',         value: 'Gelding' },
+      { label: 'Personality', value: 'Ridiculous, Dramatic and Hilarious' },
+    ],
   },
   {
-    emoji: '🐔',
-    name: 'Our Chickens',
-    description:
-      'Our flock of 15 heritage breed chickens produce beautiful speckled eggs daily. Kids love hand-feeding them scratch and learning where breakfast really comes from.',
-    fact: '15 chickens',
+    species: 'horse',
+    badge: 'Horse',
+    name: 'Athena',
+    showName: 'Khantefina',
+    description: 'Inexplicably also known as "Bean", "Beana" and "Athena Bean", Athena is a mostly quiet mare whose main thought in life is forage — but she\'s strangely picky about treats. Currently an effective hay vacuum, she is training to be a jumping bean but thinks her main job is cleaning everyone\'s hay. She\'s also the boss of Vegas.',
+    photo: null,
+    info: [
+      { label: 'Breed',       value: 'Holsteiner' },
+      { label: 'Birthday',    value: 'April 2017' },
+      { label: 'Sex',         value: 'Mare' },
+      { label: 'Personality', value: 'Quiet, Bold and Curious' },
+    ],
   },
+  {
+    species: 'horse',
+    badge: 'Pony',
+    name: 'Bambee',
+    showName: 'AA Awesome Bambee',
+    description: 'Mostly known as "Bams", Bambee is famous for playing hard, sleeping hard, and looking absolutely adorable while doing it. Having spent her life as a school pony, Bambee is a pony extraordinaire with kids of all levels.',
+    photo: null,
+    info: [
+      { label: 'Breed',       value: 'POA (Pony of the Americas)' },
+      { label: 'Birthday',    value: '2002' },
+      { label: 'Sex',         value: 'Mare' },
+      { label: 'Personality', value: 'Plays Hard and Naps Hard' },
+    ],
+  },
+  {
+    species: 'horse',
+    badge: 'Horse',
+    name: 'Vegas',
+    showName: null,
+    description: 'Vegas is our retired boarder, but is part of the family and our homemade herd. She is a big, quiet, gentle girl — friends with Athena (although they don\'t admit it) and tolerant of Ray (eventually!). Vegas is rather picky about friends, but fully embraces the retired life and loves long naps in the field.',
+    photo: null,
+    info: [
+      { label: 'Breed',       value: 'Gelderlander' },
+      { label: 'Birthday',    value: '2002' },
+      { label: 'Sex',         value: 'Mare' },
+      { label: 'Personality', value: 'Gentle, selective, retired & loving it' },
+    ],
+  },
+  {
+    species: 'chicken',
+    badge: 'Flock',
+    name: 'The Chickens',
+    showName: null,
+    description: 'Our flock of about 15 hens and 1 rooster live in a large pen when they are not escaping. Our mixed heritage breeds make for a colourful, characterful flock.',
+    photo: null,
+    info: [
+      { label: 'Flock size', value: '15 hens and 1 rooster' },
+      { label: 'Housing',    value: 'Large pen' },
+      { label: 'Eggs',       value: 'Brown to White' },
+      { label: 'Breeds',     value: 'Silver Laced Wyandotte · Buff & Lavender Orpington · Barred Rock · Black Copper Maran · Leghorn · Barnyard Mix' },
+    ],
+  },
+  {
+    species: 'cat',
+    badge: 'Cat',
+    name: 'Smidge',
+    showName: null,
+    description: 'Smidge rules the farm with quiet authority. He squeaks. He is equally at home in a bed or on a hay bale',
+    photo: null,
+    info: [
+      { label: 'Breed',              value: 'A Cat' },
+      { label: 'Role',           value: 'Chief supervisor' },
+      { label: 'Birthday',       value: 'August 2023' },
+    ],
+  },
+  {
+    species: 'dog',
+    badge: 'Dog',
+    name: 'Grommet',
+    showName: null,
+    description: "Mostly known as Groms, Grommet is our dog. He tries to police horses with no success and loves people. His native habitat is the couch, but will join you outside....sometimes.",
+    photo: null,
+    info: [
+      { label: 'Breed',              value: 'Lab mix' },
+      { label: 'Birthday',           value: 'Dec 24' },
+      { label: 'Favourite activity', value: 'Couch napping' },
+    ],
+  },
+];
+
+const filters = [
+  { key: 'all',     label: 'All Animals' },
+  { key: 'horse',   label: 'Horses' },
+  { key: 'chicken', label: 'Chickens' },
+  { key: 'cat',     label: 'Cat' },
+  { key: 'dog',     label: 'Dog' },
 ];
 ---
 
 <section id="our-animals" class="animals-section">
   <div class="animals-inner">
-    <h2 class="section-title">Meet Our Animals</h2>
+    <p class="section-label">Meet the residents</p>
+    <h2 class="section-title">Our Animals</h2>
     <p class="section-sub">
-      Every creature on Firebelly Farm has a name, a personality, and a whole lot of love to give.
+      Meet our creatures!
     </p>
-    <div class="animals-grid">
-      {animals.map((animal) => (
-        <div class="animal-card">
-          <div class="animal-emoji">{animal.emoji}</div>
+
+    <div class="filter-bar" role="group" aria-label="Filter animals by species">
+      {filters.map((f) => (
+        <button
+          class:list={['filter-btn', { active: f.key === 'all' }]}
+          data-filter={f.key}
+          type="button"
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="animal-list" id="animal-list">
+      {animals.map((animal, i) => (
+        <div
+          class:list={['animal-row', { reverse: i % 2 !== 0 }]}
+          data-species={animal.species}
+        >
+          <div class="animal-photo">
+            {animal.photo
+              ? <img src={animal.photo} alt={`${animal.name} at Firebelly Farm`} />
+              : (
+                <div class="photo-placeholder">
+                  <div class="ph-icon">
+                    {animal.species === 'horse' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 17c2-4 6-6 9-4m0 0c1-3 4-5 6-3M12 13l1 7m-4-3l3-1"/><circle cx="17" cy="6" r="2"/>
+                      </svg>
+                    )}
+                    {animal.species === 'chicken' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <ellipse cx="12" cy="13" rx="5" ry="6"/><path d="M12 7c0-2 1.5-3 3-2M9 10c-1-1-3-1-3 1"/><path d="M10 19l-2 2m4-2v2m2-2l2 2"/>
+                      </svg>
+                    )}
+                    {animal.species === 'cat' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 5C8 5 5 8 5 12s3 7 7 7 7-3 7-7-3-7-7-7z"/><path d="M5 5l2 4M19 5l-2 4M9 13h.01M15 13h.01M10 16s1 1 2 0"/>
+                      </svg>
+                    )}
+                    {animal.species === 'dog' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M10 3L8 7H4l3 3-1 4 4-2 4 2-1-4 3-3h-4z"/><path d="M8 17c0 2 1.5 3 4 3s4-1 4-3"/>
+                      </svg>
+                    )}
+                  </div>
+                  <p>Photo coming soon</p>
+                </div>
+              )
+            }
+          </div>
+
           <div class="animal-info">
-            <h3>{animal.name}</h3>
-            <p>{animal.description}</p>
-            <span class="animal-fact">{animal.fact}</span>
+            <span class="animal-badge">{animal.badge}</span>
+            <h3 class="animal-name">{animal.name}</h3>
+            {animal.showName && <p class="show-name">Show name: <em>{animal.showName}</em></p>}
+            <p class="animal-desc">{animal.description}</p>
+            <div class:list={['info-grid', { 'info-grid--wide': animal.species === 'chicken' }]}>
+              {animal.info.map((box) => (
+                <div class:list={['info-box', { 'info-box--full': animal.species === 'chicken' && box.label === 'Breeds' }]}>
+                  <div class="ib-label">{box.label}</div>
+                  <div class="ib-value">{box.value || 'Coming soon'}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       ))}
@@ -38,7 +186,32 @@ const animals = [
   </div>
 </section>
 
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const rows       = document.querySelectorAll<HTMLElement>('.animal-row');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      rows.forEach((row) => {
+        const match = filter === 'all' || row.dataset.species === filter;
+        row.style.display = match ? '' : 'none';
+        if (match) row.style.animation = 'fadeIn 0.25s ease';
+      });
+      const visible = [...rows].filter((r) => r.style.display !== 'none');
+      visible.forEach((r, i) => r.classList.toggle('reverse', i % 2 !== 0));
+    });
+  });
+</script>
+
 <style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   .animals-section {
     background: #fef2e7;
     padding: 64px 32px;
@@ -49,70 +222,215 @@ const animals = [
     margin: 0 auto;
   }
 
+  .section-label {
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c0390b;
+    margin-bottom: 6px;
+  }
+
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 38px;
+    font-size: 2.2rem;
     font-weight: 700;
     color: #8b2500;
     margin-bottom: 8px;
   }
 
   .section-sub {
-    font-size: 16px;
+    font-size: 1rem;
     color: #7a4030;
-    margin-bottom: 40px;
-    line-height: 1.6;
+    margin-bottom: 32px;
+    line-height: 1.7;
+    max-width: 560px;
   }
 
-  .animals-grid {
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .filter-btn {
+    background: #fff;
+    border: 1.5px solid #f5c99a;
+    color: #7a4030;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .filter-btn:hover {
+    background: #fff0e0;
+    border-color: #e8a070;
+  }
+
+  .filter-btn.active {
+    background: #c0390b;
+    color: #fff;
+    border-color: #c0390b;
+  }
+
+  .animal-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .animal-card {
     background: #fff;
     border-radius: 18px;
-    padding: 28px;
     border: 1.5px solid #f5c99a;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+    overflow: hidden;
+    margin-bottom: 28px;
   }
 
-  .animal-emoji {
-    font-size: 48px;
-    width: 64px;
-    height: 64px;
+  .animal-row.reverse .animal-photo { order: 2; }
+  .animal-row.reverse .animal-info  { order: 1; }
+
+  .animal-photo {
+    position: relative;
+    min-height: 280px;
+    background: #e8d5c0;
+    overflow: hidden;
+  }
+
+  .animal-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+  }
+
+  .ph-icon {
+    width: 52px;
+    height: 52px;
+    background: #f5dfc8;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fff5ed;
-    border-radius: 14px;
-    flex-shrink: 0;
   }
 
-  .animal-info h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: #8b2500;
-    margin-bottom: 6px;
+  .ph-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #c07040;
   }
 
-  .animal-info p {
-    font-size: 14px;
-    color: #6b3a28;
-    line-height: 1.6;
+  .photo-placeholder p {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #b07050;
   }
 
-  .animal-fact {
+  .animal-info {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .animal-badge {
     display: inline-block;
-    margin-top: 10px;
     background: #fff0e0;
     color: #c0390b;
-    font-size: 12px;
+    font-size: 0.67rem;
     font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     padding: 4px 12px;
     border-radius: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  .animal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #8b2500;
+    margin-bottom: 4px;
+    line-height: 1.1;
+  }
+
+  .show-name {
+    font-size: 0.78rem;
+    color: #b07050;
+    margin-bottom: 12px;
+  }
+
+  .show-name em {
+    font-style: italic;
+    color: #8b5030;
+  }
+
+  .animal-desc {
+    font-size: 0.9rem;
+    color: #6b3a28;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .info-box {
+    background: #fff5ed;
+    border: 1px solid #f5d5b0;
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+
+  .info-box--full {
+    grid-column: 1 / -1;
+  }
+
+  .ib-label {
+    font-size: 0.61rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #b07050;
+    margin-bottom: 3px;
+  }
+
+  .ib-value {
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: #4a2810;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .animals-section { padding: 48px 20px; }
+
+    .animal-row,
+    .animal-row.reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .animal-row.reverse .animal-photo { order: unset; }
+    .animal-row.reverse .animal-info  { order: unset; }
+
+    .animal-photo { min-height: 220px; }
+    .animal-info  { padding: 24px 20px; }
   }
 </style>

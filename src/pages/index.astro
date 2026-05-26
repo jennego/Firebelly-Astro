@@ -3,28 +3,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import SummerCamp from '../components/SummerCamp.astro';
+import Lessons from '../components/Lessons.astro';
 import Animals from '../components/Animals.astro';
-import VisitUs from '../components/VisitUs.astro';
+import Instructor from '../components/Instructor.astro';
+import FAQ from '../components/FAQ.astro';
+import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout
-  title="Firebelly Farm — Where Days Smell Like Hay & Happiness"
-  description="Family hobby farm and summer camps for kids in the Cowichan Valley, BC. Horses, chickens, and unforgettable summer memories."
+  title="Firebelly Farm"
+  description="Family hobby farm, summer camps, riding lessons and pony rides in the Cowichan Valley, BC."
 >
   <Nav />
   <Hero />
   <div class="wavy">~ ~ ~ ~ ~ ~ ~ ~</div>
   <SummerCamp />
+  <Lessons />
   <Animals />
-  <VisitUs />
+  <Instructor />
+  <FAQ />
+  <Contact />
   <Footer />
 </BaseLayout>
 
 <style>
   .wavy {
     text-align: center;
-    font-size: 28px;
+    font-size: 1.5rem;
     letter-spacing: 8px;
     padding: 8px 0;
     color: #f5c99a;

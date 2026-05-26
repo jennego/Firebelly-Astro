@@ -20,7 +20,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -36,10 +36,29 @@ const {
     padding: 0;
   }
 
+  html {
+    font-size: 20px;
+    scroll-behavior: smooth;
+  }
+
+  /*
+   * ── Global body font ──────────────────────────────────────────────────────
+   * Set ONE value here and every paragraph, list, label, and prose element
+   * across all components inherits it automatically.
+   * Components use relative units (em/rem) so they scale with this.
+   * ──────────────────────────────────────────────────────────────────────────
+   */
   body {
     font-family: 'Nunito', sans-serif;
+    font-size: 1rem;       /* = 20px — change here to resize all body text */
+    line-height: 1.75;
     background: #fff5ed;
     color: #2d1a0e;
+  }
+
+  /* Paragraphs, list items, and table cells all inherit body size */
+  p, li, td, th, label, input, select, textarea, button {
+    font-size: inherit;
   }
 
   img {
@@ -49,10 +68,5 @@ const {
 
   a {
     text-decoration: none;
-  }
-
-  button {
-    cursor: pointer;
-    font-family: 'Nunito', sans-serif;
   }
 </style>

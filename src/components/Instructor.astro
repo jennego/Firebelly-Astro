@@ -1,0 +1,324 @@
+---
+const instructor = {
+  name: 'Leora Burtch',
+  tagline: 'Certified teacher. Certified coach.',
+  photo: null, // e.g. '/leora.jpg' once available
+  bio: `Leora brings a rare blend of classroom expertise and competition-level horsemanship to Firebelly Farm. A certified BC teacher at Queen Margaret's School and experienced Equestrian Canada certified coach, she has a passion for helping riders of all ages and levels build confidence and achieve their goals. When she's not teaching or riding, Leora is a busy mum of three, including a set of twins.`,
+  credentials: [
+    { text: 'Certified BC Teacher', sub: 'Queen Margaret\'s School' },
+    { text: 'Equestrian Canada Certified Coach', sub: null },
+    { text: 'Mum of three', sub: 'including a set of twins' },
+  ],
+
+};
+---
+
+<section id="instructor" class="instructor-section">
+  <div class="instructor-inner">
+    <p class="section-label">Your instructor</p>
+    <h2 class="section-title">Meet Leora</h2>
+
+    <div class="profile-card">
+      <div class="profile-photo">
+        {instructor.photo
+          ? <img src={instructor.photo} alt={`${instructor.name}, lead instructor at Firebelly Farm`} />
+          : (
+            <div class="photo-placeholder">
+              <div class="ph-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+              </div>
+              <p>Photo coming soon</p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="profile-body">
+        <span class="name-badge">Lead instructor</span>
+        <h3 class="profile-name">{instructor.name}</h3>
+        <p class="profile-tagline">{instructor.tagline}</p>
+        <p class="profile-bio">{instructor.bio}</p>
+
+        <div class="creds">
+          {instructor.credentials.map((c) => (
+            <div class="cred-item">
+              <div class="cred-dot"></div>
+              <div class="cred-text">
+                {c.text}{c.sub && <span> — {c.sub}</span>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .instructor-section {
+    background: #fff5ed;
+    padding: 64px 32px;
+  }
+
+  .instructor-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c0390b;
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #8b2500;
+    margin-bottom: 40px;
+  }
+
+  .profile-card {
+    background: #fff;
+    border-radius: 20px;
+    border: 1.5px solid #f5c99a;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+  }
+
+  .profile-photo {
+    background: #e8d5c0;
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+  }
+
+  .ph-icon {
+    width: 56px;
+    height: 56px;
+    background: #f5dfc8;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ph-icon svg {
+    width: 30px;
+    height: 30px;
+    color: #c07040;
+  }
+
+  .photo-placeholder p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #b07050;
+  }
+
+  .profile-body {
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .name-badge {
+    display: inline-block;
+    background: #fff0e0;
+    color: #c0390b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+
+  .profile-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #8b2500;
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+
+  .profile-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #c0390b;
+    margin-bottom: 20px;
+  }
+
+  .profile-bio {
+    font-size: 1rem;
+    color: #6b3a28;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  .creds {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .cred-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cred-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e8560a;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .cred-text {
+    font-size: 14px;
+    color: #4a2810;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .cred-text span {
+    font-weight: 400;
+    color: #7a4030;
+  }
+
+  .disciplines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .disciplines-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b07050;
+  }
+
+  .disc-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .pill.current {
+    background: #c0390b;
+    color: #fff;
+  }
+
+  .pill.past {
+    background: #fff0e0;
+    color: #8b3010;
+    border: 1px solid #f5c99a;
+  }
+
+  .pill-note {
+    font-size: 11px;
+    color: #b07050;
+    font-style: italic;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #f5d5b0;
+    margin: 24px 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .stat-box {
+    background: #fff5ed;
+    border: 1px solid #f5d5b0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #c0390b;
+  }
+
+  .stat-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #b07050;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .profile-card {
+      grid-template-columns: 1fr;
+    }
+
+    .profile-photo {
+      min-height: 280px;
+    }
+
+    .photo-placeholder {
+      min-height: 280px;
+    }
+
+    .profile-body {
+      padding: 28px 24px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

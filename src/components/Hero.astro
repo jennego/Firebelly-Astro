@@ -9,22 +9,23 @@
   />
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">✦ Est. 2024 ✦ Family Farm ✦ Summer Camp</div>
+    <div class="hero-badge">✦ Est. 2012 ✦ Family Farm ✦ Summer Camp</div>
     <h1><em>Firebelly</em> Farm</h1>
     <p class="tagline">Where Days Smell Like Hay &amp; Happiness</p>
     <div class="hero-btns">
       <a href="#summer-camp" class="btn-primary">Book Summer Camp</a>
-      <a href="#visit-us" class="btn-secondary">Plan a Visit</a>
+      <a href="#lessons" class="btn-secondary">Lessons & Rides</a>
     </div>
   </div>
 </section>
 
-<div class="hero-strip">
-  <div class="strip-item"><span class="ico">🐴</span> Horses</div>
-  <div class="strip-item"><span class="ico">🐔</span> Chickens</div>
-  <div class="strip-item"><span class="ico">🌻</span> Gardens</div>
-  <div class="strip-item"><span class="ico">🏕️</span> Summer Camp</div>
-</div>
+<nav class="hero-strip" aria-label="Quick navigation">
+  <a href="#summer-camp"  class="strip-item"><span>🏕️</span> Summer Camp</a>
+  <a href="#lessons"      class="strip-item"><span>🐴</span> Lessons & Rides</a>
+  <a href="#our-animals"  class="strip-item"><span>🐾</span> Our Animals</a>
+  <a href="#instructor"   class="strip-item"><span>🌟</span> Meet Leora</a>
+  <a href="#faq"          class="strip-item"><span>❓</span> FAQ</a>
+</nav>
 
 <style>
   .hero {
@@ -66,7 +67,7 @@
   .hero-badge {
     background: rgba(255, 255, 255, 0.18);
     color: #fff;
-    font-size: 12px;
+    font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -79,7 +80,7 @@
 
   .hero-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 62px;
+    font-size: 3.2rem;
     font-weight: 900;
     color: #fff;
     line-height: 1.05;
@@ -93,7 +94,7 @@
   }
 
   .tagline {
-    font-size: 20px;
+    font-size: 1.05rem;
     color: #ffe8cc;
     max-width: 520px;
     margin: 0 auto 28px;
@@ -115,7 +116,6 @@
     color: #c0390b;
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
-    font-size: 15px;
     padding: 13px 28px;
     border-radius: 50px;
     border: none;
@@ -123,46 +123,40 @@
     transition: transform 0.15s;
     display: inline-block;
   }
-
-  .btn-primary:hover {
-    transform: scale(1.04);
-  }
+  .btn-primary:hover { transform: scale(1.04); }
 
   .btn-secondary {
     background: transparent;
     color: #fff;
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
-    font-size: 15px;
     padding: 13px 28px;
     border-radius: 50px;
     border: 2px solid rgba(255, 255, 255, 0.55);
     text-decoration: none;
     display: inline-block;
+    transition: background 0.15s;
   }
+  .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
 
   .hero-strip {
-    background: #c0390b;
+    background: #a52d08;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .strip-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 16px 32px;
+    gap: 8px;
+    padding: 15px 24px;
     color: #ffe4cc;
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     border-right: 1px solid rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
   }
-
-  .strip-item:last-child {
-    border-right: none;
-  }
-
-  .ico {
-    font-size: 20px;
-  }
+  .strip-item:last-child { border-right: none; }
+  .strip-item:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
 </style>

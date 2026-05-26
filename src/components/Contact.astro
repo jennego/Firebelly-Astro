@@ -1,0 +1,242 @@
+---
+---
+
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Say Hello</h2>
+      <p class="section-sub">
+        Questions about camp? 
+        Drop us a note and we'll get back to you within a day or two.
+      </p>
+      <div class="contact-details">
+        <div class="detail-item">
+          <span class="detail-icon">📧</span>
+      
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">📞</span>
+  
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">📍</span>
+          <span>North Cowichan, BC</span>
+        </div>
+      </div>
+    </div>
+
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="contact-form"
+    >
+      <!-- Netlify hidden fields -->
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="sr-only">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First name <span class="req">*</span></label>
+          <input id="first-name" type="text" name="first-name" required placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last name</label>
+          <input id="last-name" type="text" name="last-name" placeholder="Smith" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span class="req">*</span></label>
+        <input id="email" type="email" name="email" required placeholder="jane@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="subject">I'm interested in…</label>
+        <select id="subject" name="subject">
+          <option value="">Select a topic</option>
+          <option value="summer-camp">Summer Camp</option>
+          <option value="eggs">Lessons/Pony Rides</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message <span class="req">*</span></label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell us a bit about what you're looking for…"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+  }
+
+  .contact-section {
+    background: #fff5ed;
+    padding: 64px 32px;
+    border-top: 1.5px solid #f5d5b0;
+  }
+
+  .contact-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .section-label {
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c0390b;
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #8b2500;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    font-size: 0.9rem;
+    color: #7a4030;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #4a2810;
+    font-weight: 600;
+  }
+
+  .detail-icon { font-size: 1.1rem; }
+
+  .detail-item a {
+    color: #c0390b;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .detail-item a:hover { color: #8b2500; }
+
+  /* Form */
+  .contact-form {
+    background: #fff;
+    border-radius: 18px;
+    border: 1.5px solid #f5c99a;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #4a2810;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .req { color: #c0390b; }
+
+  input,
+  select,
+  textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: #2d1a0e;
+    background: #fff5ed;
+    border: 1.5px solid #f5c99a;
+    border-radius: 10px;
+    padding: 10px 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    width: 100%;
+  }
+
+  input::placeholder,
+  textarea::placeholder { color: #c0a080; }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #c0390b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 11, 0.12);
+  }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  select { appearance: none; cursor: pointer; }
+
+  .submit-btn {
+    background: #c0390b;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .submit-btn:hover {
+    background: #8b2500;
+    transform: scale(1.02);
+  }
+
+  /* Mobile */
+  @media (max-width: 680px) {
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .contact-form { padding: 24px 20px; }
+
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>

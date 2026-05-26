@@ -1,50 +1,154 @@
 ---
-const dates = [
-  'Week 1 — July 7–11',
-  'Week 2 — July 28 – Aug 1',
-  'Week 3 — Aug 18–22',
-];
-
 const activities = [
-  { icon: '🐴', text: 'Guided horse grooming and beginner riding lessons each day' },
-  { icon: '🐔', text: 'Morning egg collection and hands-on chicken care' },
-  { icon: '🌱', text: 'Farm-to-table snacks from our garden harvest' },
-  { icon: '🏕️', text: 'Campfire storytelling and outdoor skills' },
-  { icon: '🎠', text: 'End-of-week mini horse show for families' },
+  { icon: '🐴', text: 'Horse care, grooming, and riding lessons' },
+  { icon: '🐔', text: 'Farm chores' },
+  { icon: '🎨', text: 'Arts and crafts' },
+  { icon: '🍕', text: 'Cooking together and family lunches' },
+  { icon: '🌿', text: 'Outdoor free play' },
+  { icon: '🏕️', text: 'Scavenger hunts and journaling' },
+  { icon: '🌳', text: 'Screen free!' },
+
 ];
 
 const highlights = [
-  { val: '12', lbl: 'Max campers' },
-  { val: '9am–4pm', lbl: 'Daily hours' },
-  { val: '4', lbl: 'Horses to meet' },
-  { val: '15', lbl: 'Free-range hens' },
+  { val: '8am',    lbl: 'Drop-off' },
+  { val: '3–4pm',  lbl: 'Pick-up' },
+  { val: '4 days', lbl: 'Per session' },
+  { val: 'Food',   lbl: 'Included' },
+];
+
+const needToKnows = [
+  { icon: '🥜', text: 'Peanut, dairy, and gluten friendly — please let us know about any allergies in advance.' },
+  { icon: '☀️', text: 'We embrace outdoor and reasonably risky play. Sunscreen and hats are the family\'s responsibility.' },
+  { icon: '💧', text: 'Please bring a labelled water bottle and label your child\'s clothing.' },
+  { icon: '🪖', text: 'A well-fitted riding helmet is required. We recommend April\'s Tack Boutique, The Trading Post, or Buckerfield\'s — call ahead to check sizing.' },
+  { icon: '📱', text: 'Please do not send your child with a phone or tablet.' },
+];
+
+
+// Schedule rows: time label + 4 day columns
+const schedule = [
+  {
+    time: '8–9am',
+    label: 'Drop-off',
+    days: [
+      'Art, puzzles, card games',
+      'Art, puzzles, card games, bracelets',
+      'Bracelets / learn to braid',
+      'Bracelets',
+    ],
+  },
+  {
+    time: '9:00',
+    label: '',
+    days: [
+      'Icebreakers & camp contract',
+      'Farm chores (groups)',
+      'Farm chores (groups)',
+      'Farm chores (groups)',
+    ],
+  },
+  {
+    time: '9:30',
+    label: '',
+    days: [
+      'Tour & safety review',
+      'Set up tack & groom horses',
+      'Scavenger hunt',
+      'Set up tack & groom horses',
+    ],
+  },
+  {
+    time: '9:45',
+    label: 'Snack',
+    days: ['Snack', 'Snack', 'Snack', 'Snack'],
+    isSnack: true,
+  },
+  {
+    time: '10:00',
+    label: '',
+    days: ['Horse Care 1', 'Riding 1', 'Horse Care 2', 'Riding 2'],
+    isHighlight: true,
+  },
+  {
+    time: '11:30',
+    label: '',
+    days: [
+      'Farm chores & outside free play',
+      'Outside free play',
+      'Outside free play',
+      'Outside free play',
+    ],
+  },
+  {
+    time: '12:00',
+    label: 'Lunch',
+    days: ['Tacos', 'Chicken Caesar Salad', 'Grilled Cheese & Greek Salad', 'Pizza'],
+    isLunch: true,
+  },
+  {
+    time: '12:30',
+    label: '',
+    days: ['Craft 1', 'Craft 2', 'Craft 3', 'Journal'],
+  },
+  {
+    time: '1:30',
+    label: '',
+    days: [
+      'Make popsicles for tomorrow',
+      'Outdoor games & stations',
+      'Make scones, muffins, or energy balls',
+      'Make ice cream · Water balloon battle 🎉',
+    ],
+  },
+  {
+    time: '2:30',
+    label: 'Snack',
+    days: ['Veggies & Dip', 'Veggies & Dip', 'Veggies & Dip', 'Veggies & Dip'],
+    isSnack: true,
+  },
+  {
+    time: '3–4pm',
+    label: 'Pick-up',
+    days: [
+      'Indoor / outdoor free play',
+      'Indoor / outdoor free play',
+      'Indoor / outdoor free play',
+      'Indoor / outdoor free play',
+    ],
+  },
+];
+
+const campPhotos = [
+  { src: null, alt: 'Campers grooming horses' },
+  { src: null, alt: 'Kids collecting eggs' },
+  { src: null, alt: 'Craft time at camp' },
+  { src: null, alt: 'Riding lesson in the paddock' },
+  { src: null, alt: 'Cooking together' },
+  { src: null, alt: 'Outdoor games and free play' },
 ];
 ---
 
 <section id="summer-camp" class="camp-section">
   <div class="section-inner">
-    <h2 class="section-title">Summer Camp 2025</h2>
-    <p class="section-sub">
-      One magical week on the farm — grooming horses, collecting eggs, learning to ride, and making
-      friends for life. Spots are limited, so register early!
-    </p>
 
+    <h2 class="section-title">Summer Camp 2026</h2>
+    <p class="section-sub">
+      Camps are 4 days, run 8am–4pm and include all food. Each day features a horsey activity in the morning and other fun things in the afternoon. 
+   </p>
+
+    <!-- ── Overview card ── -->
     <div class="camp-feature">
       <div class="camp-left">
-        <div>
-          <div class="age-badge">Ages 6–14 · Day Camp</div>
-          <h3>Firebelly Farm Camp</h3>
-          <p>
-            A full week of real farm life — kids arrive each morning to care for animals, ride
-            horses, and get their hands delightfully dirty.
-          </p>
-          <div class="dates-list">
-            {dates.map((d) => <div class="date-chip">📅 {d}</div>)}
-          </div>
-        </div>
-        <div class="price-row">
-          <div class="price">$420 <span>/ week</span></div>
-          <a href="#contact" class="reg-btn">Register Now →</a>
+        <div class="age-badge">Day Camp · 8am–4pm</div>
+        <h3>Firebelly Farm Camp</h3>
+        <p>
+          Each session runs four days and includes two riding lessons and two horse care lessons. Campers also get to pitch in on daily farm chores, eat together, make crafts, and enjoy outdoor free play. We keep screens out of it and focus on fun, connection, and learning.
+        </p>
+        <div class="contact-cta">
+          <p class="cta-label">Ready to sign up?</p>
+          <a href="https://form.jotform.com/261307082687057" target="_blank" rel="noopener noreferrer" class="reg-btn">Register Now →</a>
+          <p class="cta-note">Opens our registration form</p>
         </div>
       </div>
 
@@ -68,13 +172,89 @@ const highlights = [
         </div>
       </div>
     </div>
+
+    <!-- ── Daily schedule ── -->
+    <div class="schedule-wrap">
+      <p class="section-label">A typical camp week</p>
+      <h3 class="sub-title">Sample Schedule</h3>
+      <p class="sub-desc">Based on sunny days — may be adjusted for weather. Leora reserves the right to make it even more fun.</p>
+
+      <div class="schedule-table-wrap">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="time-col">Time</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            {schedule.map((row) => (
+              <tr class:list={[
+                { 'row-snack': row.isSnack },
+                { 'row-highlight': row.isHighlight },
+                { 'row-lunch': row.isLunch },
+              ]}>
+                <td class="time-col"><span class="time-label">{row.time}</span></td>
+                {row.days.map((d) => <td>{d}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Need to knows ── -->
+    <div class="ntk-wrap">
+      <p class="section-label">Before you arrive</p>
+      <h3 class="sub-title">Good to Know</h3>
+      <div class="ntk-grid">
+        {needToKnows.map((n) => (
+          <div class="ntk-card">
+            <span class="ntk-icon">{n.icon}</span>
+            <p>{n.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+
+    <!-- ── Photo gallery ── -->
+    <div class="gallery-label">
+      <span class="gl-title">Camp life in pictures</span>
+      <span class="gallery-note">Photos coming soon — check back after our first session!</span>
+    </div>
+    <div class="photo-grid">
+      {campPhotos.map((photo, i) => (
+        <div class:list={['photo-cell', { wide: i === 0 }]}>
+          {photo.src
+            ? <img src={photo.src} alt={photo.alt} />
+            : (
+              <div class="photo-placeholder">
+                <div class="ph-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="M21 15l-5-5L5 21"/>
+                  </svg>
+                </div>
+                <p>{photo.alt}</p>
+              </div>
+            )
+          }
+        </div>
+      ))}
+    </div>
+
   </div>
 </section>
 
 <style>
   .camp-section {
     background: #fff5ed;
-    padding: 0 0 64px;
+    padding: 0 0 72px;
   }
 
   .section-inner {
@@ -83,21 +263,46 @@ const highlights = [
     margin: 0 auto;
   }
 
+  .section-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c0390b;
+    margin-bottom: 4px;
+  }
+
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 38px;
+    font-size: 2.2rem;
     font-weight: 700;
     color: #8b2500;
     margin-bottom: 8px;
   }
 
   .section-sub {
-    font-size: 16px;
+    font-size: 1rem;
     color: #7a4030;
     margin-bottom: 40px;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
+  .sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #8b2500;
+    margin-bottom: 6px;
+  }
+
+  .sub-desc {
+    font-size: 0.85rem;
+    color: #b07050;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  /* ── Overview card ── */
   .camp-feature {
     background: #fff;
     border-radius: 20px;
@@ -105,6 +310,7 @@ const highlights = [
     border: 1.5px solid #f5c99a;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 56px;
   }
 
   .camp-left {
@@ -112,13 +318,13 @@ const highlights = [
     padding: 40px 36px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 0;
   }
 
   .age-badge {
     background: rgba(255, 255, 255, 0.22);
     color: #fff;
-    font-size: 11px;
+    font-size: 0.67rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -127,76 +333,66 @@ const highlights = [
     display: inline-block;
     margin-bottom: 18px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    width: fit-content;
   }
 
   .camp-left h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 2rem;
     color: #fff;
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
-  .camp-left p {
-    font-size: 15px;
+  .camp-left > p {
+    font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.88);
-    line-height: 1.7;
-    margin-bottom: 28px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+    flex: 1;
   }
 
-  .dates-list {
+  .contact-cta {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 28px;
+    gap: 10px;
   }
 
-  .date-chip {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 10px;
-  }
-
-  .price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-  }
-
-  .price {
-    font-size: 32px;
+  .cta-label {
+    font-size: 0.78rem;
     font-weight: 700;
-    color: #fff;
-  }
-
-  .price span {
-    font-size: 14px;
-    font-weight: 400;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 !important;
   }
 
   .reg-btn {
     background: #fff;
     color: #c0390b;
-    border-radius: 24px;
-    font-size: 14px;
+    border-radius: 50px;
+    font-size: 0.9rem;
     font-weight: 700;
-    padding: 11px 24px;
+    padding: 13px 28px;
     font-family: 'Nunito', sans-serif;
     text-decoration: none;
     display: inline-block;
-    transition: background 0.15s;
+    width: fit-content;
+    transition: background 0.15s, transform 0.15s;
   }
 
   .reg-btn:hover {
     background: #fff5ed;
+    transform: scale(1.03);
+  }
+
+  .cta-note {
+    font-size: 0.72rem !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    margin: 0 !important;
   }
 
   .camp-right {
@@ -206,7 +402,7 @@ const highlights = [
 
   .camp-right h4 {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 1.2rem;
     color: #8b2500;
     margin-bottom: 20px;
     font-weight: 700;
@@ -221,25 +417,25 @@ const highlights = [
   }
 
   .act-list li {
-    font-size: 14px;
+    font-size: 0.85rem;
     color: #4a2810;
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .act-ico {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     background: #fff0e0;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 0.85rem;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
   .highlights {
@@ -256,18 +452,265 @@ const highlights = [
   }
 
   .val {
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #c0390b;
     font-family: 'Playfair Display', serif;
   }
 
   .lbl {
-    font-size: 11px;
+    font-size: 0.62rem;
     color: #7a4030;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: 2px;
+  }
+
+  /* ── Schedule ── */
+  .schedule-wrap {
+    margin-bottom: 56px;
+  }
+
+  .schedule-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1.5px solid #f5c99a;
+    background: #fff;
+  }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+  }
+
+  .schedule-table thead tr {
+    background: linear-gradient(90deg, #c0390b, #e8560a);
+  }
+
+  .schedule-table thead th {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .time-col {
+    width: 72px;
+    min-width: 64px;
+  }
+
+  .time-label {
+    font-weight: 700;
+    color: #c0390b;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .schedule-table tbody tr {
+    border-bottom: 1px solid #f5e0cc;
+  }
+
+  .schedule-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .schedule-table tbody td {
+    padding: 10px 14px;
+    color: #4a2810;
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .schedule-table tbody tr:nth-child(even) {
+    background: #fff9f4;
+  }
+
+  /* Row type highlights */
+  .row-highlight td {
+    background: #fff0e0 !important;
+    font-weight: 700;
+    color: #8b2500 !important;
+  }
+
+  .row-snack td {
+    background: #fef5e7 !important;
+    color: #7a4030 !important;
+    font-style: italic;
+  }
+
+  .row-lunch td {
+    background: #fde8d0 !important;
+    font-weight: 600;
+  }
+
+  .row-highlight .time-label,
+  .row-snack .time-label,
+  .row-lunch .time-label {
+    color: #c0390b;
+  }
+
+  /* ── Need to knows ── */
+  .ntk-wrap {
+    margin-bottom: 48px;
+  }
+
+  .ntk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .ntk-card {
+    background: #fff;
+    border: 1.5px solid #f5c99a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .ntk-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ntk-card p {
+    font-size: 0.83rem;
+    color: #4a2810;
+    line-height: 1.65;
+  }
+
+  /* ── Packing list ── */
+  .pack-wrap {
+    margin-bottom: 56px;
+  }
+
+  .pack-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+  }
+
+  .pack-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: #4a2810;
+    line-height: 1.5;
+  }
+
+  .check {
+    color: #c0390b;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pack-note {
+    color: #8b5030;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  /* ── Gallery ── */
+  .gallery-label {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .gl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #8b2500;
+  }
+
+  .gallery-note {
+    font-size: 0.75rem;
+    color: #b07050;
+    font-style: italic;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .photo-cell {
+    border-radius: 14px;
+    overflow: hidden;
+    background: #e8d5c0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .photo-cell.wide {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+  }
+
+  .photo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .ph-icon {
+    width: 40px;
+    height: 40px;
+    background: #f5dfc8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ph-icon svg {
+    width: 22px;
+    height: 22px;
+    color: #c07040;
+  }
+
+  .photo-placeholder p {
+    font-size: 0.7rem;
+    color: #b07050;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 700px) {
+    .camp-feature   { grid-template-columns: 1fr; }
+    .ntk-grid       { grid-template-columns: 1fr; }
+    .pack-list      { grid-template-columns: 1fr; }
+    .photo-grid     { grid-template-columns: repeat(2, 1fr); }
+    .photo-cell.wide { grid-column: span 2; }
   }
 </style>

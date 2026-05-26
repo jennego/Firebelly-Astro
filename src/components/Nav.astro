@@ -1,54 +1,240 @@
 ---
-const navLinks = ['Home', 'Summer Camp', 'Our Animals', 'Visit Us', 'Contact'];
+const navLinks = [
+  { label: 'Home',             href: '/' },
+  { label: 'Summer Camp',      href: '#summer-camp' },
+  { label: 'Lessons & Rides',  href: '#lessons' },
+  { label: 'Our Animals',      href: '#our-animals' },
+  { label: 'Meet Leora',       href: '#instructor' },
+  { label: 'FAQ',              href: '#faq' },
+  { label: 'Contact',          href: '#contact' },
+];
 ---
 
-<nav class="nav">
-  <div class="nav-logo">🔥 <span>Firebelly</span> Farm</div>
+<nav class="nav" aria-label="Main navigation">
+  <a href="/" class="nav-logo">🔥 <span>Firebelly</span> Farm</a>
+
   <div class="nav-links">
     {navLinks.map((link) => (
-      <a href={link === 'Home' ? '/' : `#${link.toLowerCase().replace(/\s+/g, '-')}`}>{link}</a>
+      <a href={link.href} class="nav-link">{link.label}</a>
     ))}
   </div>
+
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <span class="mobile-logo">🔥 <span>Firebelly</span> Farm</span>
+    <button class="mobile-close" aria-label="Close menu" id="mobile-close-btn">✕</button>
+  </div>
+  {navLinks.map((link) => (
+    <a href={link.href} class="mobile-link">{link.label}</a>
+  ))}
+</div>
+<div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+<script>
+  const btn      = document.querySelector('.hamburger') as HTMLButtonElement;
+  const closeBtn = document.getElementById('mobile-close-btn') as HTMLButtonElement;
+  const menu     = document.getElementById('mobile-menu')!;
+  const backdrop = document.getElementById('mobile-backdrop')!;
+
+  function openMenu() {
+    menu.classList.add('open');
+    backdrop.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    btn.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    backdrop.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    btn.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+</script>
 
 <style>
   .nav {
     background: #c0390b;
-    padding: 14px 32px;
+    padding: 0 36px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 200;
+    min-height: 62px;
   }
 
   .nav-logo {
     font-family: 'Playfair Display', serif;
     color: #fff;
-    font-size: 22px;
+    font-size: 1.1rem;
     font-weight: 900;
     letter-spacing: 1px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
   }
-
-  .nav-logo span {
-    color: #ffd580;
-  }
+  .nav-logo span { color: #ffd580; }
 
   .nav-links {
     display: flex;
-    gap: 24px;
+    align-items: stretch;
+    gap: 2px;
   }
 
-  .nav-links a {
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
     color: #ffe4cc;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: color 0.15s;
+    letter-spacing: 0.2px;
+    position: relative;
+    transition: color 0.15s, background 0.15s;
   }
 
-  .nav-links a:hover {
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 14px;
+    right: 14px;
+    height: 3px;
+    background: #ffd580;
+    border-radius: 3px 3px 0 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-link:hover {
     color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+    align-self: center;
+    transition: background 0.15s;
+  }
+  .hamburger:hover { background: rgba(255, 255, 255, 0.2); }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0; right: 0;
+    width: 300px;
+    height: 100dvh;
+    background: #7a1f00;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 32px rgba(0, 0, 0, 0.25);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 8px;
+  }
+  .mobile-logo {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+  .mobile-logo span { color: #ffd580; }
+
+  .mobile-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .mobile-close:hover { background: rgba(255, 255, 255, 0.22); }
+
+  .mobile-link {
+    color: #ffe4cc;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 13px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.15s, color 0.15s, padding-left 0.15s;
+    display: block;
+  }
+  .mobile-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding-left: 36px;
+  }
+
+  .mobile-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 250;
+    backdrop-filter: blur(2px);
+  }
+  .mobile-backdrop.open { display: block; }
+
+  @media (max-width: 1024px) {
+    .nav-links  { display: none; }
+    .hamburger  { display: flex; }
   }
 </style>

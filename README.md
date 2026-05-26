@@ -1,46 +1,50 @@
-# Astro Starter Kit: Basics
+# 🔥 Firebelly Farm
 
-```sh
-npm create astro@latest -- --template basics
+> Where Days Smell Like Hay & Happiness
+
+A hobby farm website built with [Astro](https://astro.build).
+
+## Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
+firebelly-farm/
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   └── sunrise_mares_24.jpg   ← hero photo
+├── src/
+│   ├── components/
+│   │   ├── Nav.astro
+│   │   ├── Hero.astro
+│   │   ├── SummerCamp.astro
+│   │   ├── Animals.astro
+│   │   ├── VisitUs.astro
+│   │   └── Footer.astro
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   └── pages/
+│       └── index.astro
+├── astro.config.mjs
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Getting Started
 
-## 🧞 Commands
+```bash
+# Install dependencies
+npm install
 
-All commands are run from the root of the project, from a terminal:
+# Start dev server
+npm run dev
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Build for production
+npm run build
 
-## 👀 Want to learn more?
+# Preview production build
+npm run preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Customisation
+
+- **Content & dates**: Edit the data arrays at the top of each `.astro` component
+- **Colours**: The palette uses `#c0390b` (red), `#e8560a` (orange), and `#ffd580` (gold accent) — find/replace to retheme
+- **Hero photo**: Replace `public/sunrise_mares_24.jpg` with any image; update the `src` in `Hero.astro`
+- **Fonts**: Loaded from Google Fonts in `BaseLayout.astro` — swap `Playfair Display` / `Nunito` as desired
