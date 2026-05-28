@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 ---
 
 <section class="hero">
@@ -19,13 +20,13 @@
   </div>
 </section>
 
-<nav class="hero-strip" aria-label="Quick navigation">
-  <a href="#summer-camp"  class="strip-item"><span>🏕️</span> Summer Camp</a>
-  <a href="#lessons"      class="strip-item"><span>🐴</span> Lessons & Rides</a>
-  <a href="#our-animals"  class="strip-item"><span>🐾</span> Our Animals</a>
-  <a href="#instructor"   class="strip-item"><span>🌟</span> Meet Leora</a>
-  <a href="#faq"          class="strip-item"><span>❓</span> FAQ</a>
-</nav>
+<!-- <nav class="hero-strip" aria-label="Quick navigation">
+  <a href="#summer-camp"  class="strip-item"><Icon name="campfire"  size={18} weight="fill" /> Summer Camp</a>
+  <a href="#lessons"      class="strip-item"><Icon name="horse"     size={18} weight="fill" /> Lessons & Rides</a>
+  <a href="#our-animals"  class="strip-item"><Icon name="paw-print" size={18} weight="fill" /> Our Animals</a>
+  <a href="#instructor"   class="strip-item"><Icon name="star"      size={18} weight="fill" /> Meet Leora</a>
+  <a href="#faq"          class="strip-item"><Icon name="question"  size={18} weight="fill" /> FAQ</a>
+</nav> -->
 
 <style>
   .hero {
@@ -140,7 +141,7 @@
   .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
 
   .hero-strip {
-    background: #a52d08;
+    background: var(--gradient-hero-strip, #a52d08);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

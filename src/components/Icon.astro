@@ -1,0 +1,205 @@
+---
+/**
+ * Phosphor Icons — inlined SVG wrapper
+ * Usage: <Icon name="horse" size={24} weight="regular" class="my-class" />
+ *
+ * Weights available: thin | light | regular | bold | fill | duotone
+ * Add new icons to the `paths` map below as needed.
+ * All paths sourced from https://phosphoricons.com (MIT licence)
+ */
+
+export interface Props {
+  name: string;
+  size?: number;
+  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
+  class?: string;
+  color?: string;
+  'aria-hidden'?: boolean | 'true' | 'false';
+  'aria-label'?: string;
+}
+
+const {
+  name,
+  size = 24,
+  weight = 'regular',
+  class: className = '',
+  color = 'currentColor',
+  'aria-hidden': ariaHidden = true,
+  'aria-label': ariaLabel,
+} = Astro.props;
+
+// ── SVG path data ────────────────────────────────────────────────────────────
+// Each icon key maps to an object of weight → SVG inner content.
+// For icons that look the same across weights we just use 'regular'.
+// Source: https://github.com/phosphor-icons/core (MIT)
+// ─────────────────────────────────────────────────────────────────────────────
+const icons: Record<string, Partial<Record<string, string>>> = {
+
+  horse: {
+    regular: `<path d="M232,96a32,32,0,1,0-57.5-19.6C152.91,81.28,136,95.52,136,112v8H120a8,8,0,0,0-8,8v56a8,8,0,0,0,8,8h16v56a8,8,0,0,0,16,0V192h48v56a8,8,0,0,0,16,0V136h8a8,8,0,0,0,8-8V96Zm-80,80V136h64v40Zm80-56h-8V104H112V96a8.12,8.12,0,0,1,0-.85C116.17,85.34,131.35,76,152,76a8,8,0,0,0,7.86-6.56A16,16,0,1,1,216,80v40Z"/>`,
+    fill: `<path d="M232,96a32,32,0,1,0-57.5-19.6C152.91,81.28,136,95.52,136,112v8H120a8,8,0,0,0-8,8v56a8,8,0,0,0,8,8h16v56a8,8,0,0,0,16,0V192h48v56a8,8,0,0,0,16,0V136h8a8,8,0,0,0,8-8V96Z"/>`,
+  },
+
+  bird: {
+    regular: `<path d="M245.83,77.83l-128,128A96.14,96.14,0,0,1,16,136v-8a8,8,0,0,1,8-8H82.75L173.17,29.17a8,8,0,0,1,10.83-.47l56,48A8,8,0,0,1,245.83,77.83ZM40,200H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"/>`,
+    fill: `<path d="M245.83,77.83l-128,128A96.14,96.14,0,0,1,16,136v-8a8,8,0,0,1,8-8H82.75L173.17,29.17a8,8,0,0,1,10.83-.47l56,48A8,8,0,0,1,245.83,77.83ZM40,200H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"/>`,
+  },
+
+  cat: {
+    regular: `<path d="M200,24H160a8,8,0,0,0-5.66,2.34L144,36.69l-6.06-6.06A8,8,0,0,0,132.28,28,96,96,0,0,0,40,123.54V224a16,16,0,0,0,16,16H76a16,16,0,0,0,16-16V208h72v16a16,16,0,0,0,16,16h20a16,16,0,0,0,16-16V152a8,8,0,0,0-16,0v72H180V144a8,8,0,0,0-16,0v16H92V144a8,8,0,0,0-16,0v80H56V123.54A80,80,0,0,1,127,44.09l9.37,9.37A8,8,0,0,0,148,48V40h52V96a8,8,0,0,0,16,0V32A8,8,0,0,0,200,24ZM92,180a12,12,0,1,1,12-12A12,12,0,0,1,92,180Zm72,0a12,12,0,1,1,12-12A12,12,0,0,1,164,180Z"/>`,
+    fill: `<path d="M200,24H160a8,8,0,0,0-5.66,2.34L144,36.69l-6.06-6.06A8,8,0,0,0,132.28,28,96,96,0,0,0,40,123.54V224a16,16,0,0,0,16,16H76a16,16,0,0,0,16-16V208h72v16a16,16,0,0,0,16,16h20a16,16,0,0,0,16-16V152a8,8,0,0,0-16,0v72H180V144a8,8,0,0,0-16,0v16H92V144a8,8,0,0,0-16,0v80H56V123.54A80,80,0,0,1,127,44.09l9.37,9.37A8,8,0,0,0,148,48V40h52V96a8,8,0,0,0,16,0V32A8,8,0,0,0,200,24Z"/>`,
+  },
+
+  dog: {
+    regular: `<path d="M240,112H229.07L208,69.85V32a8,8,0,0,0-13.66-5.66l-32,32A8,8,0,0,0,160,64H136a40,40,0,0,0-37.05,25H88a24,24,0,0,0-24,24v8H24A16,16,0,0,0,8,137v6a34,34,0,0,0,34,34H56v47a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V208h32v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V160h12.61A32.06,32.06,0,0,0,240,128V128A16,16,0,0,0,240,112ZM163.31,48l16-16V64.58l14.85,28.09A32.19,32.19,0,0,0,192,96H166.18l12-12A8,8,0,0,0,166.83,72.69L144.69,94.83A24.08,24.08,0,0,1,136,80h24A8,8,0,0,0,163.31,48Z"/>`,
+    fill: `<path d="M240,112H229.07L208,69.85V32a8,8,0,0,0-13.66-5.66l-32,32A8,8,0,0,0,160,64H136a40,40,0,0,0-37.05,25H88a24,24,0,0,0-24,24v8H24A16,16,0,0,0,8,137v6a34,34,0,0,0,34,34H56v47a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V208h32v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V160h12.61A32.06,32.06,0,0,0,240,128V128A16,16,0,0,0,240,112Z"/>`,
+  },
+
+  egg: {
+    regular: `<path d="M188,112c0,51.58-26.27,92-60,92s-60-40.42-60-92C68,68,92,20,128,20S188,68,188,112Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M188,112c0,51.58-26.27,92-60,92s-60-40.42-60-92C68,68,92,20,128,20S188,68,188,112Z"/>`,
+  },
+
+  'paw-print': {
+    regular: `<path d="M103.82,144.88A55.53,55.53,0,0,0,96,148c-6.83,0-22.21-8.4-32-8.4S40.06,148,32,148a28,28,0,0,0,0,56c12,0,24.53-8,32-8s20,8,32,8,20-8,32-8,20,8,32,8a28,28,0,0,0,0-56c-8.06,0-23.44,8.4-32,8.4A55.53,55.53,0,0,0,120,145M60,112a20,20,0,1,0-20-20A20,20,0,0,0,60,112Zm136,0a20,20,0,1,0-20-20A20,20,0,0,0,196,112ZM84,80a20,20,0,1,0-20-20A20,20,0,0,0,84,80Zm88,0a20,20,0,1,0-20-20A20,20,0,0,0,172,80Z"/>`,
+    fill: `<path d="M80,60A20,20,0,1,1,60,40,20,20,0,0,1,80,60Zm96,20A20,20,0,1,0,156,60,20,20,0,0,0,176,80ZM60,72A20,20,0,1,0,40,92,20,20,0,0,0,60,92Zm136,0a20,20,0,1,0-20,20A20,20,0,0,0,196,92Zm28,100a28,28,0,0,1-28,28c-12,0-24-8-32-8s-20,8-32,8-20-8-32-8-20,8-32,8a28,28,0,0,1,0-56c8.06,0,23.44,8.4,32,8.4a55.53,55.53,0,0,1,7.82-3.12,55.53,55.53,0,0,1,7.82,3.12C123.53,172.4,140,164,160,164s36,8,36,8C204,172,224,192,224,192Z"/>`,
+  },
+
+  campfire: {
+    regular: `<path d="M112,88c0-32,16-72,48-80,0,28,16,44,32,60s24,32,24,52a56,56,0,0,1-104.07,28.31C96,176,80,160,80,136A55.82,55.82,0,0,1,112,88Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="232" x2="232" y2="232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="24" y1="232" x2="64" y2="232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M80.37,197.37,48,232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M176,197.37,208,232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M216,224H176.56A64,64,0,0,0,192,184c0-22.75-9.37-41.42-27.81-59.54-3.68-3.63-7.48-7.16-11.15-10.57C140.88,102.08,128,90.36,128,72a8,8,0,0,0-15.08-3.73C98.23,98.65,88,126.06,88,152a64,64,0,0,0,15.44,41.56A4,4,0,0,1,100.38,200L72,232H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>`,
+  },
+
+  sun: {
+    regular: `<circle cx="128" cy="128" r="60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="36" x2="128" y2="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="62.9" y1="62.9" x2="48.78" y2="48.78" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="36" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="62.9" y1="193.1" x2="48.78" y2="207.22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="220" x2="128" y2="240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="193.1" y1="193.1" x2="207.22" y2="207.22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="220" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="193.1" y1="62.9" x2="207.22" y2="48.78" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM40,120H16a8,8,0,0,0,0,16H40a8,8,0,0,0,0-16Zm88,96a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V224A8,8,0,0,0,128,216Zm112-96H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>`,
+  },
+
+  leaf: {
+    regular: `<path d="M208,32c0,88-56,152-152,168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M208,32C208,32,165,55,64,160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="216" x2="112" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M213.66,26.34a8,8,0,0,0-7.4-2.1C199.91,25.5,147,38.05,88.83,88.06A248.2,248.2,0,0,0,55.37,128H32a16,16,0,0,0-14.31,23.16l20.27,40.55L73.45,227.2,42.34,213.66a8,8,0,0,0-11.32,11.32l32,32a8,8,0,0,0,11.32-11.32L64.44,235.6l20-41.44,40.55,20.27A16,16,0,0,0,148,200V176.63a248.2,248.2,0,0,0,39.94-33.46c50-58.17,62.56-111.08,63.82-117.43A8,8,0,0,0,213.66,26.34Z"/>`,
+  },
+
+  palette: {
+    regular: `<circle cx="108" cy="100" r="12"/><circle cx="148" cy="76" r="12"/><circle cx="108" cy="148" r="12"/><circle cx="80" cy="124" r="12"/><path d="M128,24A104,104,0,1,0,232,128c0-32-20-44-44-44H164a28,28,0,0,0,0,56c6,0,12,4,12,12a12,12,0,0,1-12,12c-34,0-48-16-48-32V128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-.4A104,104,0,0,0,128,232a24,24,0,0,0,24-24v-8h20a28,28,0,0,0,28-28c0-13.51-4.6-22.46-9.48-31.75C185.56,128.59,180,118.15,180,104A76.08,76.08,0,0,0,200.77,53.89ZM108,164a16,16,0,1,1,16-16A16,16,0,0,1,108,164Zm0-48a16,16,0,1,1,16-16A16,16,0,0,1,108,116Zm40-36a16,16,0,1,1,16-16A16,16,0,0,1,148,80Z"/>`,
+  },
+
+  'cooking-pot': {
+    regular: `<path d="M56,56V40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M200,56V40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M128,56V40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M208,56H48A16,16,0,0,0,32,72v80a96,96,0,0,0,192,0V72A16,16,0,0,0,208,56Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M208,48H136V40a8,8,0,0,0-16,0v8H48A24,24,0,0,0,24,72v80a104,104,0,0,0,208,0V72A24,24,0,0,0,208,48Z"/>`,
+  },
+
+  'game-controller': {
+    regular: `<path d="M105.22,32H150.78a8,8,0,0,1,7.79,6.22l29.56,120.93C194.56,178.39,210.53,192,232,192a8,8,0,0,0,8-8V152a8,8,0,0,0-8-8H216V120h16a8,8,0,0,0,8-8V80a8,8,0,0,0-8-8H192a8,8,0,0,0-8,8V96H72V80a8,8,0,0,0-8-8H24a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8H40v24H24a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8c21.47,0,37.44-13.61,44.87-33L97.43,38.22A8,8,0,0,1,105.22,32ZM152,108a12,12,0,1,0,12,12A12,12,0,0,0,152,108ZM96,108H88V100a8,8,0,0,0-16,0v8H64a8,8,0,0,0,0,16H72v8a8,8,0,0,0,16,0v-8h8a8,8,0,0,0,0-16Z"/>`,
+    fill: `<path d="M240,80v32a8,8,0,0,1-8,8H216v24h16a8,8,0,0,1,8,8v32a8,8,0,0,1-8,8c-21.47,0-37.44-13.61-44.87-33L158.57,38.22A8,8,0,0,0,150.78,32H105.22a8,8,0,0,0-7.79,6.22L68.87,159C61.44,178.39,45.47,192,24,192a8,8,0,0,1-8-8V152a8,8,0,0,1,8-8H40V120H24a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H64a8,8,0,0,1,8,8V96H184V80a8,8,0,0,1,8-8h40A8,8,0,0,1,240,80ZM152,108a12,12,0,1,0,12,12A12,12,0,0,0,152,108ZM80,100a8,8,0,0,0-8,8v8H64a8,8,0,0,0,0,16H72v8a8,8,0,0,0,16,0v-8h8a8,8,0,0,0,0-16H88v-8A8,8,0,0,0,80,100Z"/>`,
+  },
+
+  'first-aid': {
+    regular: `<rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="88" x2="128" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12,104H140v44a12,12,0,0,1-24,0V136H60a12,12,0,0,1,0-24h56V68a12,12,0,0,1,24,0v44h56a12,12,0,0,1,0,24Z"/>`,
+  },
+
+  trophy: {
+    regular: `<line x1="128" y1="192" x2="128" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="224" x2="160" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M56,56H24a8,8,0,0,0-8,8v32a40,40,0,0,0,40,40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M200,56h32a8,8,0,0,1,8,8v32a40,40,0,0,1-40,40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M64,24H192a8,8,0,0,1,8,8V120a72,72,0,0,1-144,0V32A8,8,0,0,1,64,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M232,56H208V48a16,16,0,0,0-16-16H64A16,16,0,0,0,48,48v8H24A16,16,0,0,0,8,72v16a48.05,48.05,0,0,0,48,48h.36A88.1,88.1,0,0,0,120,196.26V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V196.26A88.1,88.1,0,0,0,199.64,136H200a48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,232,56ZM56,120A32,32,0,0,1,24,88V72H48v48C48,118.68,48,119.34,56,120Zm176-32a32,32,0,0,1-32,32c0-.66,0-1.32,0-2V72h32Z"/>`,
+  },
+
+  'map-pin': {
+    regular: `<circle cx="128" cy="104" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M128,16a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,16Zm0,56a40,40,0,1,1-40,40A40,40,0,0,1,128,72Z"/>`,
+  },
+
+  clock: {
+    regular: `<circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm56,112H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48a8,8,0,0,1,0,16Z"/>`,
+  },
+
+  envelope: {
+    regular: `<rect x="32" y="56" width="192" height="144" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="32 104 128 152 224 104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M224,48H32a16,16,0,0,0-16,16V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm-96,85.15L54.19,64H201.81ZM98.21,128,32,181.41V74.59Zm11.09,9.59,14,11.24a8,8,0,0,0,9.38,0l14-11.24L219.81,192H36.19ZM157.79,128,224,74.59V181.41Z"/>`,
+  },
+
+  phone: {
+    regular: `<path d="M92.5,124.8a83.55,83.55,0,0,0,39,38.9,8,8,0,0,0,7.9-.6l25-16.7a8,8,0,0,1,7.6-.7l46.8,20.1a8,8,0,0,1,4.8,8.3A48,48,0,0,1,176,216,136,136,0,0,1,40,80,48,48,0,0,1,81.2,32.4a8,8,0,0,1,8.3,4.8l20.1,46.9a8,8,0,0,1-.6,7.5L92.2,116.9A8,8,0,0,0,92.5,124.8Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46Z"/>`,
+  },
+
+  users: {
+    regular: `<circle cx="88" cy="100" r="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M155.41,57.35A56,56,0,1,1,168,212H88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M14.78,200a72.08,72.08,0,0,1,138.44,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M117.25,157.92a60,60,0,1,0-58.5,0A96.44,96.44,0,0,0,4.29,201.68a8,8,0,0,0,13.42,8.64,80,80,0,0,1,134.58,0,8,8,0,0,0,13.42-8.64A96.44,96.44,0,0,0,117.25,157.92Zm96.36,38.08A96.29,96.29,0,0,0,174.4,162.58a60,60,0,1,0-76.84-2.9A96.22,96.22,0,0,0,141,195.64a80.55,80.55,0,0,0-12.57,8.18,96.26,96.26,0,0,1,82.13-11.47,8,8,0,1,0,3.05-15.35Z"/>`,
+  },
+
+  star: {
+    regular: `<polygon points="128 32 155.63 90.54 220 99.27 174 144.1 184.9 208 128 178.54 71.1 208 82 144.1 36 99.27 100.37 90.54 128 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M239.2,97.29a16,16,0,0,0-13.81-11L166,81.17,142.72,25.81h0a15.95,15.95,0,0,0-29.44,0L90.07,81.17,30.61,86.32a16,16,0,0,0-9.11,28.06L66.61,153.8,53.09,212.34a16,16,0,0,0,23.84,17.34l51-31,51.09,31A16,16,0,0,0,202.91,212.34L189.4,153.8l45.1-39.42A16,16,0,0,0,239.2,97.29Z"/>`,
+  },
+
+  'check-circle': {
+    regular: `<polyline points="172 104 113.33 160 84 132" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/>`,
+  },
+
+  'question': {
+    regular: `<circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="176" r="12"/><path d="M128,144v-8a36,36,0,1,0-36-36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M140,176a12,12,0,1,1-12-12A12,12,0,0,1,140,176Zm100-48A112,112,0,1,1,128,16,112.13,112.13,0,0,1,240,128Zm-16,0a96,96,0,1,0-96,96A96.11,96.11,0,0,0,224,128Zm-68,8v-8a44,44,0,1,0-44-44,8,8,0,0,0,16,0,28,28,0,1,1,28,28,8,8,0,0,0-8,8v8a8,8,0,0,0,8,8Z"/>`,
+  },
+
+  helmet: {
+    regular: `<path d="M232,144H200V96a72,72,0,0,0-144,0v48H24a8,8,0,0,0-8,8,112.12,112.12,0,0,0,224,0A8,8,0,0,0,232,144Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M240,144a8,8,0,0,0-8-8H208V96a80,80,0,0,0-160,0v40H24a8,8,0,0,0-8,8,120.13,120.13,0,0,0,120,120A120.13,120.13,0,0,0,240,144Z"/>`,
+  },
+
+  'shield-check': {
+    regular: `<path d="M40,114.79V56a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v58.77c0,84.18-71.3,111.91-88,117.91C111.3,226.68,40,199,40,114.79Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="172 107 113.33 163 84 135" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M216,48H40a16,16,0,0,0-16,16v50.79c0,89.61,75.82,118.61,91.07,123.87a16,16,0,0,0,9.86,0C140.18,233.4,216,204.4,216,114.79V64A16,16,0,0,0,216,48Zm-40.54,74.61-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L114,161.65l50.34-50.34a8,8,0,0,1,11.11,11.3Z"/>`,
+  },
+
+  'drops': {
+    regular: `<path d="M208,152a80,80,0,1,1-80-80A80,80,0,0,1,208,152Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M128,72V24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75Z"/>`,
+  },
+
+  'swimming-pool': {
+    regular: `<path d="M24,168c8.54-8.54,20.79-16,40-16s31.46,7.46,40,16,20.79,16,40,16,31.46-7.46,40-16,20.79-16,40-16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M24,120c8.54-8.54,20.79-16,40-16s31.46,7.46,40,16,20.79,16,40,16,31.46-7.46,40-16,20.79-16,40-16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="80" y1="24" x2="80" y2="72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="176" y1="48" x2="176" y2="72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M80,24H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M176,40H88V32a8,8,0,0,0-16,0V72.11A119.07,119.07,0,0,0,64,72a119.07,119.07,0,0,0-40,7V32a8,8,0,0,0-16,0V224a8,8,0,0,0,16,0V175.63c12.73-9.19,26.35-15.63,40-15.63s27.27,6.44,40,15.63V224a8,8,0,0,0,16,0V175.63c12.73-9.19,26.35-15.63,40-15.63s27.27,6.44,40,15.63V224a8,8,0,0,0,16,0V32a8,8,0,0,0-16,0V79a119.07,119.07,0,0,0-40-7,119.07,119.07,0,0,0-8,.27V40ZM128,127.63c-12.73-9.19-26.35-15.63-40-15.63V56h88V56.4c-0.82,0-1.64-.4-2.46-.4C160.35,56,146.73,118.44,128,127.63Z"/>`,
+  },
+
+  bicycle: {
+    regular: `<circle cx="68" cy="164" r="44" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="188" cy="164" r="44" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M68,164l57.6-96H188" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="32 100 92 100 188 164" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M188,108a55.59,55.59,0,0,0-20.08,3.74L143.47,80H188a8,8,0,0,0,0-16H121.6a8,8,0,0,0-6.85,12.13L128,98.65,95,152H68.31l-7.2-12H92a8,8,0,0,0,0-16H32a8,8,0,0,0,0,16h12.15L51.37,152H68A51.93,51.93,0,1,0,120,208a51.46,51.46,0,0,0-11.27-32h31.61A8,8,0,0,0,147.2,172l40-66.74A52,52,0,1,0,188,108ZM68,208a36,36,0,1,1,26.34-60.34L81.18,168H68a8,8,0,0,0,0,16H96A36,36,0,0,1,68,208Zm98.05-36H128.58l26.46-44.14A35.85,35.85,0,0,1,188,172,36.19,36.19,0,0,1,166.05,172Z"/>`,
+  },
+
+  'calendar': {
+    regular: `<rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="176" y1="24" x2="176" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="80" y1="24" x2="80" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="88" x2="216" y2="88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>`,
+    fill: `<path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,80A8,8,0,1,1,64,88,8,8,0,0,1,72,80Zm56,0a8,8,0,1,1-8,8A8,8,0,0,1,128,80Zm56,0a8,8,0,1,1-8,8A8,8,0,0,1,184,80Z"/>`,
+  },
+
+};
+
+// resolve weight → path content
+const iconDef = icons[name];
+const pathContent = iconDef
+  ? (iconDef[weight] ?? iconDef['fill'] ?? iconDef['regular'] ?? Object.values(iconDef)[0])
+  : null;
+---
+
+{pathContent ? (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 256 256"
+    class={className}
+    aria-hidden={ariaHidden === true ? 'true' : ariaHidden}
+    aria-label={ariaLabel}
+    fill={weight === 'regular' || weight === 'light' || weight === 'thin' ? 'none' : color}
+    stroke={weight === 'fill' ? 'none' : color}
+    stroke-width={weight === 'thin' ? 8 : weight === 'light' ? 12 : 16}
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    set:html={pathContent}
+  />
+) : (
+  <span class={className} style={`display:inline-block;width:${size}px;height:${size}px;background:#f5c99a;border-radius:4px;`} aria-label={`Missing icon: ${name}`} />
+)}

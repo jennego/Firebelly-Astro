@@ -1,4 +1,15 @@
 ---
+import Icon from './Icon.astro';
+
+const price = '$560';
+
+const dates = [
+  'July 14–17',
+  'August 4–7',
+  'August 10–13',
+  'August 17–20',
+];
+
 const activities = [
   { icon: '🐴', text: 'Horse care, grooming, and riding lessons' },
   { icon: '🐔', text: 'Farm chores' },
@@ -12,7 +23,7 @@ const activities = [
 
 const highlights = [
   { val: '8am',    lbl: 'Drop-off' },
-  { val: '3–4pm',  lbl: 'Pick-up' },
+  { val: '4pm',  lbl: 'Pick-up' },
   { val: '4 days', lbl: 'Per session' },
   { val: 'Food',   lbl: 'Included' },
 ];
@@ -146,7 +157,18 @@ const campPhotos = [
           Each session runs four days and includes two riding lessons and two horse care lessons. Campers also get to pitch in on daily farm chores, eat together, make crafts, and enjoy outdoor free play. We keep screens out of it and focus on fun, connection, and learning.
         </p>
         <div class="contact-cta">
-          <p class="cta-label">Ready to sign up?</p>
+          <div class="dates-list">
+            {dates.map((d) => (
+              <div class="date-chip">
+                <Icon name="calendar" size={14} weight="fill" />
+                {d}
+              </div>
+            ))}
+          </div>
+          <div class="price-row">
+            <span class="price">{price}</span>
+            <span class="price-note">per session</span>
+          </div>
           <a href="https://form.jotform.com/261307082687057" target="_blank" rel="noopener noreferrer" class="reg-btn">Register Now →</a>
           <p class="cta-note">Opens our registration form</p>
         </div>
@@ -359,6 +381,46 @@ const campPhotos = [
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .dates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .date-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 0.83rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 10px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .price-note {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
   }
 
   .cta-label {

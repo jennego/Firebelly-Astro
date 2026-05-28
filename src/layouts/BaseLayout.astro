@@ -36,27 +36,78 @@ const {
     padding: 0;
   }
 
+  /*
+   * ╔══════════════════════════════════════════════════════════════════════════╗
+   * ║  FIREBELLY FARM — THEME TOKENS                                           ║
+   * ║  Edit these CSS custom properties to retheme the entire site.            ║
+   * ║  Every component references these variables, so one change here          ║
+   * ║  cascades everywhere automatically.                                      ║
+   * ╚══════════════════════════════════════════════════════════════════════════╝
+   *
+   * To swap colour scheme, just update the values in :root below.
+   * Font families are set in --font-heading and --font-body.
+   * Font size is set via --font-size-base on html.
+   */
+  :root {
+    /* ── Brand colours ─────────────────────────────────────────────────── */
+    --color-primary:        #c0390b;   /* main red — buttons, nav, accents */
+    --color-primary-dark:   #8b2500;   /* darker red — headings, hover states */
+    --color-primary-deeper: #7a1f00;   /* deepest — mobile menu bg */
+    --color-primary-mid:    #a52d08;   /* mid — hero strip bg */
+    --color-secondary:      #e8560a;   /* orange — gradients, highlights */
+    --color-secondary-light:#f5820a;   /* light orange — gradient end */
+    --color-accent:         #ffd580;   /* gold — logo span, hero em, nav underline */
+
+    /* ── Background colours ─────────────────────────────────────────────── */
+    --color-bg-body:        #fff5ed;   /* warm cream — page background */
+    --color-bg-section-alt: #fef2e7;   /* slightly deeper cream — alternate sections */
+    --color-bg-card:        #ffffff;   /* card / form backgrounds */
+    --color-bg-input:       #fff5ed;   /* form input fill */
+    --color-bg-info-box:    #fff0e0;   /* badge / info box fill */
+    --color-bg-dark:        #2d1a0e;   /* footer background */
+
+    /* ── Text colours ───────────────────────────────────────────────────── */
+    --color-text-body:      #2d1a0e;   /* main body text */
+    --color-text-heading:   #8b2500;   /* section headings */
+    --color-text-muted:     #7a4030;   /* subtitles, descriptions */
+    --color-text-faint:     #b07050;   /* labels, notes, placeholders */
+    --color-text-card:      #4a2810;   /* text inside cards */
+    --color-text-card-body: #6b3a28;   /* paragraph text inside cards */
+
+    /* ── Footer specific ────────────────────────────────────────────────── */
+    --color-footer-bg:      #2d1a0e;
+    --color-footer-text:    #f0d5c0;   /* light warm — high contrast on dark bg */
+    --color-footer-sub:     #c8a090;   /* secondary footer line */
+    --color-footer-accent:  #ffa060;   /* brand name highlight in footer */
+
+    /* ── Border colours ─────────────────────────────────────────────────── */
+    --color-border:         #f5c99a;   /* card borders */
+    --color-border-inner:   #f5d5b0;   /* info-box borders */
+
+    /* ── Gradients ──────────────────────────────────────────────────────── */
+    --gradient-primary:     linear-gradient(160deg, var(--color-primary), var(--color-secondary), var(--color-secondary-light));
+    --gradient-hero-strip:  var(--color-primary-mid);
+    --gradient-cta:         linear-gradient(135deg, var(--color-primary-dark), var(--color-primary), var(--color-secondary));
+
+    /* ── Typography ─────────────────────────────────────────────────────── */
+    --font-heading: 'Playfair Display', serif;
+    --font-body:    'Nunito', sans-serif;
+  }
+
   html {
-    font-size: 20px;
+    font-size: 20px;   /* ← change this to scale ALL body text up or down */
     scroll-behavior: smooth;
   }
 
-  /*
-   * ── Global body font ──────────────────────────────────────────────────────
-   * Set ONE value here and every paragraph, list, label, and prose element
-   * across all components inherits it automatically.
-   * Components use relative units (em/rem) so they scale with this.
-   * ──────────────────────────────────────────────────────────────────────────
-   */
   body {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;       /* = 20px — change here to resize all body text */
+    font-family: var(--font-body);
+    font-size: 1rem;
     line-height: 1.75;
-    background: #fff5ed;
-    color: #2d1a0e;
+    background: var(--color-bg-body);
+    color: var(--color-text-body);
   }
 
-  /* Paragraphs, list items, and table cells all inherit body size */
+  /* All prose elements inherit body font size */
   p, li, td, th, label, input, select, textarea, button {
     font-size: inherit;
   }
